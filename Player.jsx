@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Player({initialName,symbol,isActive}) {
+export default function Player({initialName,symbol,isActive,onChangeName}) {
 
     const[playerName,setPlayerName]=useState(initialName)
     const [isEditing,setIsEditing]= useState(false)
@@ -14,6 +14,10 @@ export default function Player({initialName,symbol,isActive}) {
         // (isEditing? setIsEditing(false) :setIsEditing(true))
         //  or we can do below that is best practice in react to call upadting stae function on basis of older value
         setIsEditing((editing)=> !editing)
+        if(isEditing)
+        {
+            onChangeName(symbol,playerName)
+        }
      }
      if(isEditing){
 
